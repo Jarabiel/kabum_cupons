@@ -95,7 +95,7 @@ if tipo_grafico == 'Gráficos Univariados':
 
 # Gráficos Multivariados
 elif tipo_grafico == 'Gráficos Multivariados':
-    expander2 = st.sh('Sessão Gráficos Multivariados')
+    expander2 = st.expander('Sessão Gráficos Multivariados')
 
     with expander2:
         fig2, axs2 = plt.subplots(2, 2, figsize=(15, 12))
