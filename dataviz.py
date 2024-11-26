@@ -5,33 +5,9 @@ import seaborn as sns
 import numpy as np
 from sqlalchemy import create_engine
 
-# Criar o banco de dados SQLite
+# Conecta com o banco de dados SQLite
 engine = create_engine('sqlite:///banco.db', echo=True)
 
-# Dados fictícios de preços de notebooks
-data = {
-    "notebook": [
-        "Dell XPS 13 9310", "Apple MacBook Air M2 256GB", "Lenovo ThinkPad X1 Carbon 9ª Geração",
-        "Acer Aspire 5", "HP Pavilion 15", "Samsung Galaxy Book 2 Pro 15", "Asus VivoBook 15",
-        "MSI GF63 Thin 11SC-212XBR", "LG Gram 14", "Microsoft Surface Laptop 4", 
-        "Lenovo IdeaPad 3 15", "Dell Inspiron 15 3000"
-    ],
-    "preco": [
-        7599.00, 10999.00, 8999.00, 3399.00, 4299.00, 5499.00, 3699.00, 6599.00, 6999.00, 7799.00,
-        2799.00, 3299.00
-    ],
-    # Adicionando tamanho de tela fictício
-    "tamanho_tela": [
-        13.3, 13.3, 14.0, 15.6, 15.6, 15.6, 15.6, 15.6, 14.0, 13.5, 15.6, 15.6
-    ]
-}
-
-df = pd.DataFrame(data)
-
-# Salvando os dados no banco de dados SQLite
-df.to_sql('dados', con=engine, if_exists='replace', index=False)
-
-# Lendo os dados do banco
 df_lido = pd.read_sql('SELECT * FROM dados', con=engine)
 
 # Opções para análise estatística
